@@ -15,10 +15,20 @@ function draw() {
     rect(0, 0, 0, 0);
 }
 function desiredCanvasWidth() {
-    return desiredCanvasHeight() * sqrt(2);
+    var ratio = sqrt(2);
+    var r = windowWidth / windowHeight;
+    if (r < ratio)
+        return windowWidth - 40;
+    else
+        return desiredCanvasHeight() * ratio;
 }
 function desiredCanvasHeight() {
-    return windowHeight - 40;
+    var ratio = sqrt(2);
+    var r = windowWidth / windowHeight;
+    if (r > ratio)
+        return windowHeight - 40;
+    else
+        return desiredCanvasWidth() / ratio;
 }
 function windowResized() {
     resizeCanvas(desiredCanvasWidth(), desiredCanvasHeight());
