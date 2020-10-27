@@ -27,8 +27,8 @@ void main() {
 
     float d1 = length(c1 - uv);
     float d2 = length(c - uv);
-    col = min(col, 1.2*vec3(1., 0.5, 0.5) * (1. - smoothstep(abs(d1 - r1), 0., 0.01)));
-    col = min(col, vec3(0.5, 0.5, 1.) * (smoothstep(abs(d2 - r2), 0., 0.1)));
+    col = min(col, 1.2*vec3(1., 0.5, 0.5) * (1. - smoothstep(max(d1 - r1, 0.), 0., 0.01)));
+    col = min(col, vec3(0.5, 0.5, 1.) * (smoothstep(max(d2 - r2, 0.), 0., 0.1)));
 
     col *= 1.5;
     //col = smoothstep(vec3(0), vec3(1), col);
